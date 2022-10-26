@@ -2,6 +2,7 @@ import { Post } from "danielbonifacio-sdk";
 import Link from "next/link";
 import { transparentize } from "polished";
 import styled from "styled-components";
+import formatPostDate from "../core/utils/formatPostDate";
 import Avatar from "./Avatar";
 
 interface FeaturedPostProps {
@@ -24,7 +25,7 @@ export default function FeaturedPost(props: FeaturedPostProps) {
             <Avatar src={props.postSummary.editor.avatarUrls.small} />
             <EditorDescription>
               <EditorName>{props.postSummary.editor.name}</EditorName>
-              <PostDate>ha 3 dias</PostDate>
+              <PostDate>{formatPostDate(props.postSummary.createdAt)}</PostDate>
             </EditorDescription>
           </Editor>
           <Title>{props.postSummary.title}</Title>
@@ -83,6 +84,10 @@ const Tags = styled.ul`
   list-style: none;
   display: flex;
   gap: 8px;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 `;
 
 const Tag = styled.li`
@@ -94,10 +99,6 @@ const Tag = styled.li`
   padding: 4px 8px;
   cursor: default;
   font-size: 12px;
-
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
 `;
 
 const Editor = styled.div`

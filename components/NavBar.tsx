@@ -1,16 +1,18 @@
-import Link from "next/link"
-import styled from "styled-components"
+import styled from "styled-components";
+import Link from "next/link";
 
 export default function NavBar() {
-  return <nav>
-    <Wrapper>
-      <li>
-        <Link href="/">
-        <a>home</a>
-        </Link>
-      </li>
-    </Wrapper>
-  </nav>
+  return (
+    <nav>
+      <Wrapper>
+        <li>
+          <Link href="/">
+            <a>Home</a>
+          </Link>
+        </li>
+      </Wrapper>
+    </nav>
+  );
 }
 
 const Wrapper = styled.ul`
@@ -19,8 +21,8 @@ const Wrapper = styled.ul`
   gap: 8px;
 
   a {
-    color: ${p => p.theme.pageForeground};
+    color: ${(p) => p.theme.pageForeground};
     text-decoration: none;
     text-transform: lowercase;
   }
-`
+`;
